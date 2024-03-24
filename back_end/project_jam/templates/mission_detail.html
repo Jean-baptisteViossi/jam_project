@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ mission.title }}</title>
+</head>
+<body>
+    <button onclick="goBack()">Back</button>
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <h1>{{ mission.title }}</h1>
+    <p>{{ mission.description }}</p>
+    <p>Date: {{ mission.date }}</p>
+    <a href="{% url 'mission_edit' mission.pk %}">Modifier</a>
+    <a href="{% url 'mission_delete' mission.pk %}">Supprimer</a>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h2>Partager Votre Histoire</h2>
+        <form action="{% url 'partager_histoire' %}" method="post">
+            <label for="titre">Titre de l'Histoire:</label><br>
+            <input type="text" id="titre" name="titre"><br>
+            <label for="contenu">Contenu de l'Histoire:</label><br>
+            <textarea id="contenu" name="contenu"></textarea><br>
+            <button type="submit">Partager</button>
+        </form>
+    </section>
+    <section>
+        <h2>Histoires Partagées</h2>
+        {% for histoire in histoires %}
+            <h3>{{ histoire.titre }}</h3>
+            <p>{{ histoire.contenu }}</p>
+        {% endfor %}
+    </section>    
+</body>
+</html>

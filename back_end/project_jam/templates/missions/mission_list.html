@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Missions</title>
+</head>
+<body>
+    <style>
+        
+    </style>
+    <button onclick="goBack()">Back</button>
+    
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+    <h1>Missions</h1>
+    <div class="mission_list">
+        <ul>
+            {% for mission in missions %}
+                <li><a href="{% url 'mission_detail' mission.pk %}">{{ mission.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="{% url 'mission_new' %}">Ajouter une mission</a>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site d'Incitation au Partage</title>
+</head>
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        nav {
+            background-color: #444;
+            text-align: center;
+            padding: 0.5rem 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        main {
+            padding: 2rem;
+        }
+        section {
+            margin-bottom: 2rem;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <header>
+        <h1>Site d'Incitation au Partage</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Accueil</a></li>
+            <li><a href="{% url 'mission_list' %}">Partager</a></li>
+            <li><a href="#">À Propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <main id="main-content">
+        <section>
+            <h2>Partagez Vos Histoires</h2>
+            <p>Partagez vos expériences inspirantes avec la communauté.</p>
+        </section>
+        <section>
+            <h2>Communauté Engagée</h2>
+            <p>Rejoignez une communauté dynamique et engagée.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Site d'Incitation au Partage. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const contactLink = document.querySelector('nav ul li:nth-child(4) a'); // Sélectionne le lien "Contact"
+    const mainContent = document.querySelector('main'); // Sélectionne la section principale
+
+    contactLink.addEventListener("click", function(event) {
+        event.preventDefault(); // Empêche le chargement de la page
+        fetch('/contact.html') // Charge le contenu de contact.html
+            .then(response => response.text())
+            .then(html => {
+                mainContent.innerHTML = html; // Insère le contenu dans la section principale
+            });
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const accueilLink = document.querySelector('nav ul li:nth-child(1) a'); // Sélectionne le lien "Accueil"
+
+    accueilLink.addEventListener("click", function(event) {
+        event.preventDefault(); // Empêche le chargement de la page
+        window.location.href = '/'; // Redirige vers la page d'accueil
+    });
+});
+function loadPartager() {
+            fetch('/partager.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('main-content').innerHTML = html;
+                });
+        }
+</script>
